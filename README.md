@@ -1,6 +1,6 @@
 # Optimized-Machine-Learning-Pipeline-with-Cython
 Optimized Machine Learning Pipeline with Cython 
-## Version: 0.0.1
+## Version: 0.0.3
 
 ## Overview
 
@@ -11,20 +11,65 @@ The **Optimized Machine Learning Pipeline with Cython** project integrates advan
 The project is organized as follows:
 
 ```
-Optimized_Machine_Learning_Pipeline_with_Cython/
+Optimized Machine Learning Pipeline with Cython/
 ├── src/
-│   ├── data/                       # Data preprocessing module
-│   ├── model/                      # Model training and evaluation
-│   ├── calculations/               # Advanced ML calculations (Cython, C++, Rust)
-│   ├── database/                   # Database setup for storing results
-│   ├── pipeline/                   # Main pipeline to execute the complete process
-│   └── utils/                      # Helper functions and utilities
-├── rust/                           # Rust implementation for high-performance calculations
-├── tests/                          # Unit tests for various modules
-├── docs/                           # Documentation and architecture
-├── setup.py                        # Installation script for the project
-├── requirements.txt                # List of dependencies
-└── .gitignore                      # Git ignore file
+│   ├── data/
+│   │   ├── __init__.py
+│   │   └── preprocessing.py       # Data preprocessing
+│   │
+│   ├── model/
+│   │   ├── __init__.py
+│   │   ├── training.py            # Model training
+│   │   └── evaluation.py          # Model evaluation
+│   │   ├── model_training.py      # Model training function
+│   │   └── hyperparameter_search.py # Bayesian optimizer integration
+│   │
+│   ├── calculations/
+│   │   ├── __init__.py
+│   │   ├── ml_calculations.pyx    # Cython interface for C++
+│   │   ├── ml_calculations.cpp    # C++ backend for advanced calculations
+│   │   ├── rust_calculations.rs   # Rust backend for intensive calculations
+│   │   ├── bayesian_optimizer.pyx # Cython for Bayesian Optimization
+│   │   ├── gauss_process.py       # Gaussian process implementation
+│   │   └── acquisition_function.py # Acquisition function
+│   │   └── setup.py               # Compilation setup for C++/Cython modules
+│   │
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── setup_database.py      # SQLite database setup
+│   │   └── results.db             # SQLite database for storing results
+│   │
+│   ├── pipeline/
+│   │   ├── __init__.py
+│   │   └── main_pipeline.py       # Main pipeline that runs the full process
+│   │
+│   └── utils/
+│       ├── __init__.py
+│       └── helper_functions.py    # Auxiliary functions and utilities
+│
+├── rust/
+│   ├── Cargo.toml                 # Rust project configuration
+│   ├── src/
+│   │   ├── lib.rs                 # Main Rust code for calculations
+│   │   └── utils.rs               # Rust utility functions
+│   └── target/                    # Rust build output files
+│
+├── tests/
+│   ├── test_preprocessing.py      # Tests for the preprocessing module
+│   ├── test_training.py           # Tests for the training module
+│   ├── test_evaluation.py         # Tests for the evaluation module
+│   ├── test_calculations.py       # Tests for advanced calculations module
+│   ├── test_rust_calculations.py  # Tests for Rust calculations module
+│   ├── test_bayesian_optimizer.py # Tests for the Bayesian optimizer
+│
+├── docs/
+│   ├── README.md                  # Project description and instructions
+│   └── architecture.md            # Documentation about the architecture and design
+│
+├── setup.py                       # Project installation script
+├── requirements.txt               # Project dependencies
+└── .gitignore                     # Git ignore file
+
 ```
 
 # Key Features
@@ -47,9 +92,12 @@ Pipeline Execution: The main pipeline is managed through pipeline/main_pipeline.
 Before running this project, ensure that the following tools are installed on your system:
 
 Python 3.x
-Rust (for Rust-based backend)
+Rust (for Rust-based backend) 
+<br>
 C++ compiler (for compiling the C++ code)
+<br>
 Cython (for Cython integration)
+<br>
 SQLite (for database functionality)
 
 # Install Dependencies
